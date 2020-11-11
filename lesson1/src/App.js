@@ -30,8 +30,7 @@ class App extends React.Component {
         <Сounter count={this.state.count} />
         <Dropdown 
           holderClassName = 'dropdown-holder'
-          className="dropdown"
-          openerClassName="drop-opener"
+          className="drop-menu"
           options={dropOptions}
         />
       </div>

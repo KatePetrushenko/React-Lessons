@@ -2,7 +2,7 @@ import React from 'react';
 
 function Сounter(props) {
   return (
-    <div>
+    <div class='count'>
       <p>{props.count}</p>
     </div>
   );
