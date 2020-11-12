@@ -1,12 +1,12 @@
 import React from 'react';
 import Dropdown from "./Dropdown";
-import Сounter from './Сounter';
+import Counter from './Counter';
 import './App.css';
 
 const dropOptions = [
-  { option: "option1" },
-  { option: "option2" },
-  { option: "option3" }
+  { option: "option 1" },
+  { option: "option 2" },
+  { option: "option 3" }
 ];
 
 class App extends React.Component {
@@ -27,7 +27,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <button onClick={this.handleClick}>Test Button</button>
-        <Сounter count={this.state.count} />
+        <Counter count={this.state.count} />
         <Dropdown 
           holderClassName = 'dropdown-holder'
           className="drop-menu"

@@ -1,11 +1,11 @@
 import React from 'react';
 
-function Сounter(props) {
+function Counter(props) {
   return (
-    <div class='count'>
+    <div className='count'>
       <p>{props.count}</p>
     </div>
   );
 }
 
-export default Сounter;
+export default Counter;

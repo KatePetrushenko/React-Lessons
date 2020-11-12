@@ -1,4 +1,5 @@
 import React from 'react';
+import List from './List';
 
 class Dropdown extends React.Component {
 
@@ -10,17 +11,23 @@ class Dropdown extends React.Component {
         super();
         
         this.state = {
-			active: false
+            activeItem: null,
+            open: false,
 		};
-
-		this.toggle = this.toggle.bind(this);
     }
-    
-    toggle() {
+
+    toggle = () => {
 		this.setState(previous => ({
-			active: !previous.active
+			open: !previous.open
 		}));
 	} 
+    
+    selectItem = (value) => {
+        this.setState({
+            activeItem: value,
+            open: false,
+        })
+    }
 
     render(){
 
@@ -30,27 +37,13 @@ class Dropdown extends React.Component {
             holderClassName,
         } = this.props;
 
-        const items = this.props.items;
-		const active = this.state.active;
+		const open = this.state.open;
 
         return (
             <div className={holderClassName}>
-                <button className={`toggle ${active ? 'active' : ''}`} onClick={this.toggle}>Show menu</button>
-                
+                <button className={`toggle ${open ? 'active' : ''}`} onClick={this.toggle}>{this.state.activeItem ? this.state.activeItem : 'Open drop menu'}</button>
                 {
-                    this.state.active
-                    ? (
-                    <ul className={className} >
-                        {options.map((item, i) => (
-                        <li key={i}>
-                            {item.option} 
-                        </li>
-                        ))}
-                    </ul>
-                    )
-                    : (
-                    null
-                    )
+                    this.state.open ? <List options={options} className={className} selectItem={this.selectItem} /> : null
                 }
             </div>
         );
