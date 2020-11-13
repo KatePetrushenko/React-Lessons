@@ -39,17 +39,3 @@
     transform: rotate(360deg);
   }
 }
-
-
-.drop-menu {
-  text-align: left;
-  border: 1px solid #ccc;
-  border-top: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.drop-menu li {
-  padding: 10px 20px;
-  border-top: 1px solid #ccc;
-}

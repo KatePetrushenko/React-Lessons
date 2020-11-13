@@ -1,5 +1,6 @@
-import React from 'react';
-import List from './List';
+import React from "react";
+import List from "./List";
+import "./style.css";
 
 class Dropdown extends React.Component {
 
@@ -32,18 +33,22 @@ class Dropdown extends React.Component {
     render(){
 
         const {
-            options,
             className,
-            holderClassName,
+            dropSwitcherClassName,
+            dropMenuClassName,
+            dropSwitcherTitle,
+            options,
         } = this.props;
 
 		const open = this.state.open;
 
         return (
-            <div className={holderClassName}>
-                <button className={`toggle ${open ? 'active' : ''}`} onClick={this.toggle}>{this.state.activeItem ? this.state.activeItem : 'Open drop menu'}</button>
+            <div className={className}>
+                <button className={`${dropSwitcherClassName} ${open ? "active" : ""}`} onClick={this.toggle}>
+                    {this.state.activeItem ? this.state.activeItem : this.props.dropSwitcherTitle}
+                </button>
                 {
-                    this.state.open ? <List options={options} className={className} selectItem={this.selectItem} /> : null
+                    this.state.open ? <List options={options} className={dropMenuClassName} selectItem={this.selectItem} /> : null
                 }
             </div>
         );

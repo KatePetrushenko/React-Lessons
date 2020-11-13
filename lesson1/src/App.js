@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 import Dropdown from "./Dropdown";
-import Counter from './Counter';
-import './App.css';
+import Counter from "./Counter";
+import "./App.css";
 
 const dropOptions = [
   { option: "option 1" },
@@ -29,8 +29,10 @@ class App extends React.Component {
         <button onClick={this.handleClick}>Test Button</button>
         <Counter count={this.state.count} />
         <Dropdown 
-          holderClassName = 'dropdown-holder'
-          className="drop-menu"
+          className="dropdown-holder"
+          dropSwitcherClassName="switcher"
+          dropMenuClassName="drop-menu"
+          dropSwitcherTitle="Open drop menu"
           options={dropOptions}
         />
       </div>
