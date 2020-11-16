@@ -21,9 +21,10 @@ class Dropdown extends React.Component {
 		this.setState(previous => ({
 			open: !previous.open
 		}));
-	} 
+    }
     
-    selectItem = (value) => {
+    
+    switchItem = (value) => {
         this.setState({
             activeItem: value,
             open: false,
@@ -48,7 +49,7 @@ class Dropdown extends React.Component {
                     {this.state.activeItem ? this.state.activeItem : this.props.dropSwitcherTitle}
                 </button>
                 {
-                    this.state.open ? <List options={options} className={dropMenuClassName} selectItem={this.selectItem} /> : null
+                    this.state.open ? <List options={options} className={dropMenuClassName} switchItem={this.switchItem} /> : null
                 }
             </div>
         );

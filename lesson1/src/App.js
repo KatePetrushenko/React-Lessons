@@ -29,9 +29,9 @@ class App extends React.Component {
         <button onClick={this.handleClick}>Test Button</button>
         <Counter count={this.state.count} />
         <Dropdown 
-          className="dropdown-holder"
-          dropSwitcherClassName="switcher"
+          className="drop-wrapper"
           dropMenuClassName="drop-menu"
+          dropSwitcherClassName="drop-switcher"
           dropSwitcherTitle="Open drop menu"
           options={dropOptions}
         />
