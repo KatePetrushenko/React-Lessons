@@ -1,6 +1,7 @@
 import React from "react";
 import Dropdown from "./Dropdown";
 import Counter from "./Counter";
+import GalleryContainer from "./GalleryContainer";
 import "./App.css";
 
 const dropOptions = [
@@ -35,6 +36,8 @@ class App extends React.Component {
           dropSwitcherTitle="Open drop menu"
           options={dropOptions}
         />
+
+        <GalleryContainer />
       </div>
     )
   }
