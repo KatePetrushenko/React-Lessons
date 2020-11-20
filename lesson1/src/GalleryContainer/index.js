@@ -1,33 +1,27 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Gallery from "./Gallery";
+import "./style.css";
 
-class GalleryContainer extends React.Component {
+const GalleryContainer = (props) => {
+    const [options, setOptions] = useState([]);
 
-    constructor() {
-        super();
-        this.state = {
-            options: [],
+    const getGalleryOptions = (url) => {
+      fetch(url)
+      .then(res => res.json())
+      .then(
+        (result) => {
+          setOptions(result);
         }
+      )
     }
 
-    componentDidMount() {
-        const url = "https://jsonplaceholder.typicode.com/albums/1/photos";
-        fetch(url)
-          .then(res => res.json())
-          .then(
-            (result) => {
-              this.setState({
-                options: result,
-              });
-            }
-        )
-    }
+    useEffect(() => {
+      getGalleryOptions(props.url);
+    });
 
-    render(){
-        return (
-            <Gallery options={this.state.options} />
-        );
-    }
+    return (
+      <Gallery className="gallery" options={options} />
+    );
 }
 
 export default GalleryContainer;

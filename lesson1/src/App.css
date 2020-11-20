@@ -39,3 +39,14 @@
     transform: rotate(360deg);
   }
 }
+
+.container {
+  margin: 0 auto;
+  padding: 30px 10px;
+  max-width: 920px;
+  border-top: 1px solid #ccc;
+}
+
+.main-wrap {
+  padding: 30px 0;
+}

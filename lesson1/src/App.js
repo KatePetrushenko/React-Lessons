@@ -2,13 +2,8 @@ import React from "react";
 import Dropdown from "./Dropdown";
 import Counter from "./Counter";
 import GalleryContainer from "./GalleryContainer";
+import { URL, dropOptions } from "./constans";
 import "./App.css";
-
-const dropOptions = [
-  { option: "option 1" },
-  { option: "option 2" },
-  { option: "option 3" }
-];
 
 class App extends React.Component {
   constructor(props) {
@@ -26,18 +21,23 @@ class App extends React.Component {
 
   render(){
     return (
-      <div className="App">
-        <button onClick={this.handleClick}>Test Button</button>
-        <Counter count={this.state.count} />
-        <Dropdown 
-          className="drop-wrapper"
-          dropMenuClassName="drop-menu"
-          dropSwitcherClassName="drop-switcher"
-          dropSwitcherTitle="Open drop menu"
-          options={dropOptions}
-        />
-
-        <GalleryContainer />
+      <div className="main-wrap">
+        <div className="count-button-wrap container">
+          <button onClick={this.handleClick}>Test Button</button>
+          <Counter count={this.state.count} />
+        </div>
+        <div className="dropdown-wrap container">
+          <Dropdown 
+            className="drop-wrapper"
+            dropMenuClassName="drop-menu"
+            dropSwitcherClassName="drop-switcher"
+            dropSwitcherTitle="Open drop menu"
+            options={dropOptions}
+          />
+        </div>
+        <div className="gallery-wrap container">
+          <GalleryContainer url={URL} />
+        </div>
       </div>
     )
   }

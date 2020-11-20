@@ -1,0 +1,26 @@
+.gallery {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.gallery-item {
+    margin-bottom: 20px;
+}
+
+@media (min-width: 768px) {
+    .gallery {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .gallery-item {
+        width: 25%;
+        box-sizing: border-box;
+        padding: 0 10px;
+    }
+}
+
+img {
+    vertical-align: top;
+    max-width: 100%;
+}
