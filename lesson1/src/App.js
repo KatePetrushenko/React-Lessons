@@ -2,6 +2,7 @@ import React from "react";
 import Dropdown from "./components/Dropdown";
 import CounterContainer from "./components/CounterContainer";
 import GalleryContainer from "./components/GalleryContainer";
+import Slider from "./components/Slider";
 import { URL, dropOptions } from "./utils/constans";
 import "./App.css";
 
@@ -13,6 +14,17 @@ class App extends React.Component {
   render(){
     return (
       <div className="main-wrap">
+        <Slider 
+          className="slider-wrap"
+          sliderWrapTitle="Lesson 4 : Slider"
+          sliderTitle="Range: "
+          defaultValue={30}
+          aria-labelledby="discrete-slider"
+          valueLabelDisplay="auto"
+          step={10}
+          min={10}
+          max={110}
+        />
         <CounterContainer
           className="count-button-wrap"
           buttonText="Click on button"
@@ -28,7 +40,7 @@ class App extends React.Component {
         />
         <GalleryContainer 
           className="gallery-wrap"
-          galleryTitle="Lesson 2 : Dropdown"
+          galleryTitle="Lesson 3 : Gallery"
           url={URL} 
         />
       </div>
