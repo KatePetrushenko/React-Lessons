@@ -1,45 +1,29 @@
 import React from "react";
+import RangeSlider from "./RangeSlider";
 import "./style.css";
 
-class Slider extends React.Component {
-    constructor() {
-        super();
-        
-        this.state = {
-            open: false,
-		};
-    }
+const Slider = (props) => {
+    const [value, setValue] = React.useState([20, 37]);
 
-    render(){
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
+    };
 
-        const {
-            className,
-            sliderWrapTitle,
-            sliderTitle,
-        } = this.props;
+    return (
+        <div className={`${props.className} container`}>
+            <h2>{props.sliderWrapTitle}</h2>
 
-
-        return (
-            <div className={`${className} container`}>
-                <h2>{sliderWrapTitle}</h2>
-
-                <h3>{sliderTitle}</h3> 
-                
-
-                <div className="range-wrap">
-                    <span className="range-root">
-                        <span className="range-track"></span>
-                        <span className="min-val pin">
-                            <span className="range-label">2</span>
-                        </span>
-                        <span className="max-val pin">
-                            <span className="range-label">4</span>
-                        </span>
-                    </span>
-                </div>
-            </div>
-        );
-    }
+            <h3>{props.sliderTitle}</h3> 
+            
+            <RangeSlider
+                value={value}
+                onChange={handleChange}
+                valueLabelDisplay="auto"
+                aria-labelledby="range-slider"
+                // getAriaValueText={valuetext}
+            />
+        </div>
+    );
 }
 
 export default Slider;

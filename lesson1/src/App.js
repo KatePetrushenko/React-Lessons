@@ -18,12 +18,6 @@ class App extends React.Component {
           className="slider-wrap"
           sliderWrapTitle="Lesson 4 : Slider"
           sliderTitle="Range: "
-          defaultValue={30}
-          aria-labelledby="discrete-slider"
-          valueLabelDisplay="auto"
-          step={10}
-          min={10}
-          max={110}
         />
         <CounterContainer
           className="count-button-wrap"
