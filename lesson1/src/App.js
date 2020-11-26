@@ -1,43 +1,36 @@
 import React from "react";
-import Dropdown from "./Dropdown";
-import Counter from "./Counter";
-import GalleryContainer from "./GalleryContainer";
-import { URL, dropOptions } from "./constans";
+import Dropdown from "./components/Dropdown";
+import CounterContainer from "./components/CounterContainer";
+import GalleryContainer from "./components/GalleryContainer";
+import { URL, dropOptions } from "./utils/constans";
 import "./App.css";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {count: 0};
-  }
-
-  handleClick = () => {
-    this.setState( curState => {
-      return {
-        count : curState.count + 1
-      }
-    })
   }
 
   render(){
     return (
       <div className="main-wrap">
-        <div className="count-button-wrap container">
-          <button onClick={this.handleClick}>Test Button</button>
-          <Counter count={this.state.count} />
-        </div>
-        <div className="dropdown-wrap container">
-          <Dropdown 
-            className="drop-wrapper"
-            dropMenuClassName="drop-menu"
-            dropSwitcherClassName="drop-switcher"
-            dropSwitcherTitle="Open drop menu"
-            options={dropOptions}
-          />
-        </div>
-        <div className="gallery-wrap container">
-          <GalleryContainer url={URL} />
-        </div>
+        <CounterContainer
+          className="count-button-wrap"
+          buttonText="Click on button"
+          counterTitle="Lesson 1 :Counter"
+        />
+        <Dropdown 
+          className="drop-wrapper"
+          dropTitle="Lesson 2 : Dropdown"
+          dropMenuClassName="drop-menu"
+          dropSwitcherClassName="drop-switcher"
+          dropSwitcherTitle="Open drop menu"
+          options={dropOptions}
+        />
+        <GalleryContainer 
+          className="gallery-wrap"
+          galleryTitle="Lesson 2 : Dropdown"
+          url={URL} 
+        />
       </div>
     )
   }

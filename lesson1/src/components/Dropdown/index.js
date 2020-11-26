@@ -37,6 +37,7 @@ class Dropdown extends React.Component {
             className,
             dropSwitcherClassName,
             dropMenuClassName,
+            dropTitle,
             dropSwitcherTitle,
             options,
         } = this.props;
@@ -44,7 +45,8 @@ class Dropdown extends React.Component {
 		const open = this.state.open;
 
         return (
-            <div className={className}>
+            <div className={`${className} container`}>
+                <h2>{dropTitle}</h2>
                 <button className={`${dropSwitcherClassName} ${open ? "active" : ""}`} onClick={this.toggle}>
                     {this.state.activeItem ? this.state.activeItem : this.props.dropSwitcherTitle}
                 </button>

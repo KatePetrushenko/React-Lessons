@@ -20,7 +20,10 @@ const GalleryContainer = (props) => {
     });
 
     return (
-      <Gallery className="gallery" options={options} />
+      <div className={`${props.className} container`}>
+        <h2>{props.galleryTitle}</h2>
+        <Gallery className="gallery" options={options} />
+      </div>
     );
 }
 
