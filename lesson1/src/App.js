@@ -2,7 +2,7 @@ import React from "react";
 import Dropdown from "./components/Dropdown";
 import CounterContainer from "./components/CounterContainer";
 import GalleryContainer from "./components/GalleryContainer";
-import Slider from "./components/Slider";
+import RangeSliderComponent from "./components/RangeSliderComponent";
 import { URL, dropOptions } from "./utils/constans";
 import "./App.css";
 
@@ -14,7 +14,7 @@ class App extends React.Component {
   render(){
     return (
       <div className="main-wrap">
-        <Slider 
+        <RangeSliderComponent 
           className="slider-wrap"
           sliderWrapTitle="Lesson 4 : Slider"
           sliderTitle="Range: "

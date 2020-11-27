@@ -48,7 +48,7 @@ class Dropdown extends React.Component {
             <div className={`${className} container`}>
                 <h2>{dropTitle}</h2>
                 <button className={`${dropSwitcherClassName} ${open ? "active" : ""}`} onClick={this.toggle}>
-                    {this.state.activeItem ? this.state.activeItem : this.props.dropSwitcherTitle}
+                    {this.state.activeItem ? this.state.activeItem : dropSwitcherTitle}
                 </button>
                 {
                     this.state.open ? <List options={options} className={dropMenuClassName} switchItem={this.switchItem} /> : null
