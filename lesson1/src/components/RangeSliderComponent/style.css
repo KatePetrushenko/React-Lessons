@@ -46,22 +46,11 @@
     transition: box-shadow 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
-.pin::after {
-    top: -15px;
-    left: -15px;
-    right: -15px;
-    bottom: -15px;
-    content: "";
-    position: absolute;
-    border-radius: 50%;
-}
-
 .range-label {
     top: -34px;
     z-index: 1;
     position: absolute;
     font-size: 0.75rem;
-    transform: scale(0);
     transition: transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
     font-family: "Roboto", "Helvetica", "Arial", sans-serif;
     font-weight: 400;
@@ -71,11 +60,4 @@
     left: calc(50% - 4px);
 }
 
-.pin:hover {
-    box-shadow: 0px 0px 0px 8px rgba(25, 118, 210, 0.16);
-}
-
-.pin:hover .range-label {
-    transform: scale(1);
-}
 

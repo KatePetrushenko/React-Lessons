@@ -3,13 +3,10 @@ import Dropdown from "./components/Dropdown";
 import CounterContainer from "./components/CounterContainer";
 import GalleryContainer from "./components/GalleryContainer";
 import RangeSliderComponent from "./components/RangeSliderComponent";
-import { URL, dropOptions } from "./utils/constans";
+import { URL, dropOptions, defoultCoords } from "./utils/constans";
 import "./App.css";
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
   render(){
     return (
@@ -18,6 +15,7 @@ class App extends React.Component {
           className="slider-wrap"
           sliderWrapTitle="Lesson 4 : Slider"
           sliderTitle="Range: "
+          defoultCoords={defoultCoords}
         />
         <CounterContainer
           className="count-button-wrap"
