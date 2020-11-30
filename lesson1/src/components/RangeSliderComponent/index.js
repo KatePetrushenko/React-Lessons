@@ -5,70 +5,66 @@ import "./style.css";
 const RangeSliderComponent = (props) => {
     const initCoords = {};
 
-    const [value, setValue] = React.useState(props.defoultCoords);
-    const [posMin, changePosMin] = React.useState(0);
-    const [posMax, changePosMax] = React.useState(0);
-    const [holderWidth, getWidth] = React.useState(0);
-    const [holderOffsetLeft, getOffsetLeft] = React.useState(0);
+    const [value, setValue] = useState(props.defoultCoords);
+    const [posMin, changePosMin] = useState(0);
+    const [posMax, changePosMax] = useState(0);
+    const [holderWidth, getWidth] = useState(0);
+    const [holderOffsetLeft, getOffsetLeft] = useState(0);
 
-    useEffect(() => {
-        getWidth(document.getElementsByClassName('range-wrap')[0].offsetWidth);
-        getOffsetLeft(document.getElementsByClassName('range-wrap')[0].offsetLeft);
+    useEffect( () => {
+        getWidth(document.getElementsByClassName("range-wrap")[0].offsetWidth);
+        getOffsetLeft(document.getElementsByClassName("range-wrap")[0].offsetLeft);
 
-        document.body.style.userSelect = 'auto';
-        window.removeEventListener('mousemove', mouseMoveHandler);
-        window.removeEventListener('mouseup', mouseUpHandler);
-
-        window.removeEventListener('mousemove', mouseMoveHandlerMax);
-        window.removeEventListener('mouseup', mouseUpHandlerMax);
+        document.body.style.userSelect = "auto";
+        window.removeEventListener("mousemove", mouseMoveHandler);
+        window.removeEventListener("mousemove", mouseMoveHandlerMax);
+        window.removeEventListener("mouseup", mouseUpHandler);
     });
 
-    const mouseDownHandler = (e) => {
-        document.body.style.userSelect = 'none';
-        window.addEventListener('mousemove', mouseMoveHandler);
-        window.addEventListener('mouseup', mouseUpHandler);
+    const mouseDown = (e, pos) => {
+        document.body.style.userSelect = "none";
 
-        initCoords.downX = e.clientX;
-    }
-
-    const mouseDownHandlerMax = e => {
-        document.body.style.userSelect = 'none';
-        window.addEventListener('mousemove', mouseMoveHandlerMax);
-        window.addEventListener('mouseup', mouseUpHandlerMax);
-
+        if (pos === "min") {
+            window.addEventListener("mousemove", mouseMoveHandler);
+        } else {
+            window.addEventListener("mousemove", mouseMoveHandlerMax);
+        }
+        
+        window.addEventListener("mouseup", mouseUpHandler);
         initCoords.downX = e.clientX;
     }
 
     const mouseUpHandler = () => {
-        document.body.style.userSelect = 'auto';
-        window.removeEventListener('mousemove', mouseMoveHandler);
-        window.removeEventListener('mouseup', mouseUpHandler);
-    }
-
-    const mouseUpHandlerMax = () => {
-        document.body.style.userSelect = 'auto';
-        window.removeEventListener('mousemove', mouseMoveHandlerMax);
-        window.removeEventListener('mouseup', mouseUpHandlerMax);
+        document.body.style.userSelect = "auto";
+        window.removeEventListener("mousemove", mouseMoveHandler);
+        window.removeEventListener("mousemove", mouseMoveHandlerMax);
+        window.removeEventListener("mouseup", mouseUpHandler);
     }
 
     const mouseMoveHandler = e => {
-        const transformX = e.clientX - initCoords.downX;
-
-        if ( (e.clientX < holderOffsetLeft) || ((value[0] + transformX) > value[1]) ) {
-            document.body.style.userSelect = 'none';
-        } else {
-            changePosMin(transformX);
-            setValue([value[0] + transformX, value[1]]);
-        }
+        mouseMove(e,"min");
     }
     const mouseMoveHandlerMax = e => {
-        const transformX = e.clientX - initCoords.downX;
+        mouseMove(e,"max");
+    }
 
-        if ( ((value[1] + transformX) < value[0]) || (e.clientX > (holderOffsetLeft + holderWidth)) ) {
-            document.body.style.userSelect = 'none';
+    const mouseMove = (e, pos) => {
+        const transformX = e.clientX - initCoords.downX;
+        let posValue;
+        let posValidation;
+
+        if (pos === "min") {
+            posValue = (e.clientX < holderOffsetLeft) || ((value[0] + transformX) > value[1]);
+            posValidation = [value[0] + transformX, value[1]];
+            changePosMin(transformX);
         } else {
+            posValue = ((value[1] + transformX) < value[0]) || (e.clientX > (holderOffsetLeft + holderWidth));
+            posValidation = [value[0],value[1] + transformX];
             changePosMax(transformX);
-            setValue([value[0],value[1] + transformX]);
+        }
+
+        if ( !posValue ) {
+            setValue(posValidation);
         }
     }
 
@@ -81,8 +77,7 @@ const RangeSliderComponent = (props) => {
             <RangeSlider
                 posMin={posMin}
                 posMax={posMax}
-                onMouseDown={mouseDownHandler}
-                onMouseDownMax={mouseDownHandlerMax}
+                onMouseDown={mouseDown}
                 value={value}
                 valueLabelDisplay="auto"
                 aria-labelledby="range-slider"

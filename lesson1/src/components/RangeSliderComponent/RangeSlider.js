@@ -16,13 +16,13 @@ function RangeSlider(props) {
                 <span 
                     className="min-val pin" 
                     style={{left: `${minPosition}px`}} 
-                    onMouseDown={props.onMouseDown}>
+                    onMouseDown={(e) => props.onMouseDown(e, "min")}>
                     <span className="range-label">{minPosition}</span>
                 </span>
                 <span 
                     className="max-val pin" 
                     style={{left: `${maxPosition}px`}} 
-                    onMouseDown={props.onMouseDownMax}
+                    onMouseDown={(e) => props.onMouseDown(e, "max")}
                     >
                     <span className="range-label">{maxPosition}</span>
                 </span>
