@@ -4,6 +4,8 @@ import "./style.css";
 
 const RangeSliderComponent = (props) => {
     const initCoords = {};
+    //use ref
+    //module css
 
     const [value, setValue] = useState(props.defoultCoords);
     const [posMin, changePosMin] = useState(0);
@@ -19,7 +21,7 @@ const RangeSliderComponent = (props) => {
         window.removeEventListener("mousemove", mouseMoveHandler);
         window.removeEventListener("mousemove", mouseMoveHandlerMax);
         window.removeEventListener("mouseup", mouseUpHandler);
-    });
+    }, []);
 
     const mouseDown = (e, pos) => {
         document.body.style.userSelect = "none";
@@ -67,7 +69,7 @@ const RangeSliderComponent = (props) => {
             setValue(posValidation);
         }
     }
-
+    // перенести оббёртки и тайтлы в app.js :
     return (
         <div className={`${props.className} container`}>
             <h2>{props.sliderWrapTitle}</h2>
@@ -79,8 +81,6 @@ const RangeSliderComponent = (props) => {
                 posMax={posMax}
                 onMouseDown={mouseDown}
                 value={value}
-                valueLabelDisplay="auto"
-                aria-labelledby="range-slider"
                 holderWidth={holderWidth}
                 holderOffsetLeft={holderOffsetLeft}
             />

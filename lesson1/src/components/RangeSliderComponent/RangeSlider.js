@@ -1,6 +1,8 @@
 import React from "react";
 
 function RangeSlider(props) {
+    // диструктуризация
+    // clamp
 
     const minPosition = props.value[0];
     const maxPosition = props.value[1];
@@ -11,10 +13,10 @@ function RangeSlider(props) {
             <span className="range-root">
                 <span 
                     className="range-track" 
-                    style={{left: `calc(${minPosition}px)`, right: `${track}px` }}
+                    style={{left: `${minPosition}px`, right: `${track}px` }}
                 ></span>
                 <span 
-                    className="min-val pin" 
+                    className="min-val pin"
                     style={{left: `${minPosition}px`}} 
                     onMouseDown={(e) => props.onMouseDown(e, "min")}>
                     <span className="range-label">{minPosition}</span>
