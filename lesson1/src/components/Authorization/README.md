@@ -1,4 +1,4 @@
 # Dropdown React Component
 
-The folder has Header Component.
+The folder has Authorization Form Component.
 
