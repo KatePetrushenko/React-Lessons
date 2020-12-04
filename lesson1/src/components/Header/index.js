@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom'
 import Navigation from "../Navigation";
 import logo from '../../logo.svg';
 import "./style.css";
@@ -13,7 +14,11 @@ class Header extends React.Component {
         return (
             <header className={className}>
                 <div className="container">
-                    <div className="logo"><img src={logo} className="App-logo" alt="logo" /></div>
+                    <div className="logo">
+                    <Link to={{pathname: "/"}}>
+                        <img src={logo} className="App-logo" alt="logo" />
+                    </Link>
+                    </div>
                     <Navigation 
                         className="nav"
                     />

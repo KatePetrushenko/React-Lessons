@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from 'react-router-dom'
 import "./style.css";
 
 class Navigation extends React.Component {
@@ -11,7 +12,19 @@ class Navigation extends React.Component {
         return (
             <nav className={className}>
                 <ul className="main-nav">
-                    <li><a href="#">login</a></li>
+                    <li>
+                        <NavLink to="/profile" activeStyle={{ color: "#61dafb" }}>Profile</NavLink>
+                    </li>
+                    <li>
+                        <NavLink
+                            to="/auth"
+                            activeStyle={{
+                                color: "#61dafb"
+                            }}
+                            >
+                            login
+                        </NavLink>
+                    </li>
                 </ul>
             </nav>
         );

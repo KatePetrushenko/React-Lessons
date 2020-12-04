@@ -2,9 +2,9 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import "./style.css";
 
-export default function Authorization() {
+export default function Authorization(props) {
     const { register, errors, handleSubmit } = useForm();
-    const onSubmit = data => console.log(data);
+    const onSubmit = data => props.onSubmit(data);
      
     return (
       <form onSubmit={handleSubmit(onSubmit)} className="register-form">
@@ -32,7 +32,7 @@ export default function Authorization() {
                 ref={register({
                     required: "required",
                     pattern: {
-                        // value: /S+@S+.S+/,
+                        value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
                         message: "Entered value does not match email format"
                     }
                 })}

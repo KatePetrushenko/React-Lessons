@@ -1,18 +1,3 @@
-.header {
-    background: #000;
-    color: #fff;;
-}
-
-.header .container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.header .logo {
-    max-width: 100px;
-}
-
 .main-nav {
     padding: 0;
     margin: 0;
@@ -29,6 +14,9 @@
     color: inherit;
     text-decoration: none;
     transition: color 0.3s ease-in-out;
+    display: inline-block;
+    vertical-align: top;
+    padding: 5px 15px;
 }
 
 .main-nav a:hover {
