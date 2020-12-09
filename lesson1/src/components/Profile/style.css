@@ -1,0 +1,17 @@
+.profile-wrap {
+    color: #fff;
+    background-color: #000;
+    padding: 30px;
+    max-width: 500px;
+    margin: 30px auto;
+}
+
+.profile-wrap ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1em;
+}
+
+.profile-wrap ul li {
+    margin: 0 0 1em;
+}

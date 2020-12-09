@@ -6,11 +6,20 @@ class Profile extends React.Component {
 
         const {
             className,
+            user,
         } = this.props;
+
+        console.log(user)
 
         return (
             <div className={className}>
-                Profile
+                <h2>User Profile:</h2>
+
+                <ul>
+                    <li>User name: <b>{user.firstName}</b></li> 
+                    <li>User email: <b>{user.email}</b></li> 
+                </ul>
+                
             </div>
         );
     }

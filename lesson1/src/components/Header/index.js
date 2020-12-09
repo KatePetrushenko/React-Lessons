@@ -9,6 +9,7 @@ class Header extends React.Component {
 
         const {
             className,
+            user,
         } = this.props;
 
         return (
@@ -19,7 +20,8 @@ class Header extends React.Component {
                         <img src={logo} className="App-logo" alt="logo" />
                     </Link>
                     </div>
-                    <Navigation 
+                    <Navigation  
+                        user={user}
                         className="nav"
                     />
                 </div>

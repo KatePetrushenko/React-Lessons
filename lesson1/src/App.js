@@ -1,6 +1,7 @@
-import React, {useState} from "react";
-import { BrowserRouter as Router, Route, Redirect, Switch } from "react-router-dom";
-import { history } from './history.js';
+import React from "react";
+import { Route, Redirect, Switch } from "react-router-dom";
+import { withRouter } from "react-router";
+
 import Header from "./components/Header";
 import Authorization from "./components/Authorization";
 import Profile from "./components/Profile";
@@ -9,37 +10,35 @@ import HomeContainer from "./containers/HomeContainer";
 
 import "./App.css";
 
-function App() {
+class App extends React.Component {
 
-  const [user, setUser] = useState();
-
-  const onSubmit = (data) => {
-    setUser(data);
-    history.push("/profile");
+  constructor(props) {
+    super(props);
+    this.state = {user: null};
   }
 
-  return (
-      <Router history={history}>
-        <div className="main-wrap">
-          <Header className="header" />
+  onSubmit = (data) => {
+    this.setState({user: data});
+    this.props.history.push('/profile');
+  }
 
-          <Switch>
-            <Route exact path="/" component={HomeContainer} />
+  render(){
+    return (
+      <div className="main-wrap">
+        <Header className="header" user={this.state.user} />
 
-            <Route path="/auth">
-              <Authorization 
-                className="register-form"
-                onSubmit={onSubmit}
-              />
-            </Route>
+        <Switch>
+          <Route exact path="/" component={HomeContainer} />
 
-            <Route exact path="/profile">
-              { user ? <Profile /> : <Redirect to="/auth" /> }
-            </Route>
-          </Switch>
-        </div>
-      </Router>
-  )
+          <Route path="/auth">
+            <Authorization className="register-form" onSubmit={this.onSubmit} />
+          </Route>
+
+          <Route path="/profile" render={() => this.state.user ? <Profile className="profile-wrap" user={this.state.user} /> : <Redirect to="/auth" /> } />
+        </Switch>
+      </div>
+    )
+  }
 }
 
-export default App;
+export default withRouter(App);
